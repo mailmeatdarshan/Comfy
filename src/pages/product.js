@@ -1,12 +1,12 @@
-// global imports
+
 import '../toggleSidebar.js';
 import '../cart/toggleCart.js';
 import '../cart/setupCart.js';
-// specific
+
 import { addToCart } from '../cart/setupCart.js';
 import { singleProductUrl, getElement, formatPrice } from '../utils.js';
 
-// selections
+
 const loading = getElement('.page-loading');
 const centerDOM = getElement('.single-product-center');
 const pageTitleDOM = getElement('.page-hero-title');
@@ -18,10 +18,10 @@ const colorsDOM = getElement('.single-product-colors');
 const descDOM = getElement('.single-product-desc');
 const cartBtn = getElement('.addToCartBtn');
 
-// cart product
+
 let productID;
 
-// show product when page loads
+
 window.addEventListener('DOMContentLoaded', async function () {
   const urlID = window.location.search;
 
@@ -29,13 +29,13 @@ window.addEventListener('DOMContentLoaded', async function () {
     const response = await fetch(`${singleProductUrl}${urlID}`);
     if (response.status >= 200 && response.status <= 299) {
       const product = await response.json();
-      // grab data
+
       const { id, fields } = product;
       productID = id;
 
       const { name, company, price, colors, description } = fields;
       const image = fields.image[0].thumbnails.large.url;
-      // set values
+   
 
       document.title = `${name.toUpperCase()} | Comfy`;
       pageTitleDOM.textContent = `Home / ${name}`;
