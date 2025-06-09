@@ -8,16 +8,16 @@ const setupPrice = (store) => {
 
   let maxPrice = store.map((product) => product.price);
   maxPrice = Math.max(...maxPrice);
-  maxPrice = Math.ceil(maxPrice / 100);
+  maxPrice = Math.ceil(maxPrice / 10);
   priceInput.value = maxPrice;
   priceInput.max = maxPrice;
   priceInput.min = 0;
-  priceValue.textContent = `Value : $${maxPrice}`;
+  priceValue.textContent = `Value : ₹${maxPrice}`;
 
   priceInput.addEventListener('input', function () {
     const value = parseInt(priceInput.value);
-    priceValue.textContent = `Value : $${value}`;
-    let newStore = store.filter((product) => product.price / 100 <= value);
+    priceValue.textContent = `Value : ₹${value}`;
+    let newStore = store.filter((product) => product.price / 10 <= value);
     display(newStore, getElement('.products-container'), true);
     if (newStore.length < 1) {
       const products = getElement('.products-container');
